@@ -7,6 +7,7 @@ const app=express();
 const expressLayouts=require("express-ejs-layouts");
 const indexRouter=require("./routes/index");
 const authorRouter=require("./routes/authors")
+const bookRouter=require("./routes/books");
 const mongoose=require("mongoose");
 const bodyParser=require("body-parser");
 
@@ -17,6 +18,7 @@ app.use(expressLayouts);
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({limit:"10mb",extended:false}));
 
+app.use("/books",bookRouter);
 app.use("/authors",authorRouter);
 app.use("/",indexRouter);
 
